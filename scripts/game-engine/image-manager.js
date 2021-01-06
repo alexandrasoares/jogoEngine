@@ -27,7 +27,7 @@ export const ImageManager = {
     }, 
 
     // Array de promisses para várias imagens
-    loadAll(images) {
+    loadAllImages(images) {
         return Promise.all(
             images.map(image => ImageManager.loadImage(image))
         )

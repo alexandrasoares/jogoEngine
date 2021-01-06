@@ -1,18 +1,16 @@
 export class Draw {
-    constructor(canvasContext, canvasWidth, canvasHeight) {
-        this.ctx = canvasContext;
+    constructor(canvasContext, canvasWidth, canvasHeight){
+        this.ctx = canvasContext;        
         this.canvasWidth = canvasWidth;
-        this.canvasWidth = canvasHeight;
-        this.center = {
-            x: canvasWidth / 2, y: canvasHeight / 2
-        }
+        this.canvasHeight = canvasHeight;
+        this.center = {x: canvasWidth/2, y: canvasHeight/2};
+
         this.fontOptions = {
-            family: 'Press Start 2p',
+            family: 'Press Start 2P',
             size: 20,
             h: 'center',
             v: 'middle'
         }
-
         this.setText();
     }
 

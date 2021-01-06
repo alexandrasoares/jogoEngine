@@ -1,32 +1,33 @@
 import { Draw } from './draw.js';
 import { ImageManager } from './image-manager.js';
+import { SoundManager } from './sound-manager.js';
+import { Input } from './input.js';
 
 const canvas = document.querySelector('#canvas');
+
+let circuleX = 0;
 
 export const Game = {
     isRunning: false, 
     ImageManager,
+    SoundManager,
+    Input,
     constructor() {
         Game.canvas = {
             element: canvas,
             ctx: canvas.getContext('2d'),
             width: canvas.width,
-            heigth: canvas.heigth,
+            height: canvas.height,
             top: 0,
-            bottom: canvas.heigth,
+            bottom: canvas.height,
             left: 0,
             right: canvas.width,
             center: {
-                x: canvas.width / 2,
-                y: canvas.heigth / 2,
+                x: canvas.width/2,
+                y: canvas.height/2
             }
         }
-
-        Game.Drawing = new Draw(
-            Game.canvas.ctx,
-            Game.canvas.width,
-            Game.canvas.heigth
-        );
+        Game.Drawing = new Draw(Game.canvas.ctx, Game.canvas.width, Game.canvas.height);
     },
 
     start() {
@@ -55,14 +56,21 @@ export const Game = {
     },
 
     update() {
+        if (Game.Input.onKey(Game.Input.key.LEFT)) {
+            circuleX -= 5;
+        }
 
+        if (Game.Input.onKey(Game.Input.key.RIGHT)) {
+            circuleX += 5;
+        }
     },
 
     // Desenha o que precisamos no canvas  
     draw() {
         // Limpa a tela antes de desenhar
         Game.Drawing.clearCanvas();
-        Game.Drawing.drawCicle(100, 100, 20);
+        Game.Drawing.drawCicle(circuleX, 10, 5);
         Game.Drawing.drawText(Game.canvas.center.x, 50, 'Start Game');
+        Game.Drawing.drawImage(Game.ImageManager.image('background'), 190, 130);
     }
 }
