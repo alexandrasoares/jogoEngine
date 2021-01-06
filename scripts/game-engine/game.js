@@ -1,11 +1,11 @@
 import { Draw } from './draw.js';
+import { ImageManager } from './image-manager.js';
 
 const canvas = document.querySelector('#canvas');
 
-let x = 0;
-
 export const Game = {
     isRunning: false, 
+    ImageManager,
     constructor() {
         Game.canvas = {
             element: canvas,
@@ -55,14 +55,14 @@ export const Game = {
     },
 
     update() {
-        x += 5;
+
     },
 
     // Desenha o que precisamos no canvas  
     draw() {
         // Limpa a tela antes de desenhar
         Game.Drawing.clearCanvas();
-        // Cria o novo desenho
-        Game.Drawing.drawRect(x, 10, 50, 100);
+        Game.Drawing.drawCicle(100, 100, 20);
+        Game.Drawing.drawText(Game.canvas.center.x, 50, 'Start Game');
     }
 }
