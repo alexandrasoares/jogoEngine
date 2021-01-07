@@ -19,7 +19,7 @@ export class Draw {
         this.ctx.fillRect(x, y, width, height);
     }
 
-    drawCicle(cx, cy, raio, color = 'white') {
+    drawCircle(cx, cy, raio, color = 'white') {
         this.ctx.fillStyle = color;
         this.ctx.arc(cx, cy, raio, 50, 0, 2 * Math.PI);
         this.ctx.fill();

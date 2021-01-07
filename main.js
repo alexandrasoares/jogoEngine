@@ -1,4 +1,5 @@
 import { Game } from './scripts/game-engine/game.js';
+import { Ball } from './scripts/game/scripts/ball.js';
 
 Game.constructor();
 
@@ -17,5 +18,6 @@ Promise.all([
     ])
 ]).then(() => {
     Game.start();
-    // Game.SoundManager.play('sound');
+    const ball = new Ball(50);
+    Game.addObject(ball);
 });

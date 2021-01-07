@@ -5,9 +5,8 @@ import { Input } from './input.js';
 
 const canvas = document.querySelector('#canvas');
 
-let circuleX = 0;
-
 export const Game = {
+    gameObjectList: [],
     isRunning: false, 
     ImageManager,
     SoundManager,
@@ -28,6 +27,17 @@ export const Game = {
             }
         }
         Game.Drawing = new Draw(Game.canvas.ctx, Game.canvas.width, Game.canvas.height);
+    },
+
+    addObject(gameObject) {
+        Game.gameObjectList.push(gameObject);
+        gameObject.start();
+    },
+
+    removeObject(gameObject) {
+        const objectIndex = Game.gameObjectList.indexOf(gameObject);
+        Game.gameObjectList.splice(objectIndex, 1);
+        gameObject.onDestroy();
     },
 
     start() {
@@ -56,21 +66,15 @@ export const Game = {
     },
 
     update() {
-        if (Game.Input.onKey(Game.Input.key.LEFT)) {
-            circuleX -= 5;
-        }
-
-        if (Game.Input.onKey(Game.Input.key.RIGHT)) {
-            circuleX += 5;
-        }
+        Game.gameObjectList.forEach(gameObject => gameObject.update());
     },
 
     // Desenha o que precisamos no canvas  
     draw() {
         // Limpa a tela antes de desenhar
         Game.Drawing.clearCanvas();
-        Game.Drawing.drawCicle(circuleX, 10, 5);
-        Game.Drawing.drawText(Game.canvas.center.x, 50, 'Start Game');
         Game.Drawing.drawImage(Game.ImageManager.image('background'), 190, 130);
+        Game.gameObjectList.forEach(gameObject => gameObject.draw());
+
     }
 }
