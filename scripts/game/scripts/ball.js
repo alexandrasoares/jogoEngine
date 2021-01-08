@@ -18,11 +18,11 @@ export class Ball extends GameObject {
         }
 
         if (this.input.onKey(this.input.key.UP)) {
-            this.x -= this.speed; 
+            this.y -= this.speed; 
         }
 
         if (this.input.onKey(this.input.key.DOWN)) {
-            this.x += this.speed; 
+            this.y += this.speed; 
         }
     }
 
