@@ -8,20 +8,19 @@ export class Ball extends GameObject {
     }
 
     update() {
-        if (this.input.onKey(this.input.key.LEFT)) {
-            debugger;
+        if (this.input.onKey(this.input.key.LEFT) && this.left > this.game.canvas.left) {
             this.x -= this.speed; 
         }
 
-        if (this.input.onKey(this.input.key.RIGHT)) {
+        if (this.input.onKey(this.input.key.RIGHT) && this.right < this.game.canvas.right) {
             this.x += this.speed; 
         }
 
-        if (this.input.onKey(this.input.key.UP)) {
+        if (this.input.onKey(this.input.key.UP) && this.top > this.game.canvas.top) {
             this.y -= this.speed; 
         }
 
-        if (this.input.onKey(this.input.key.DOWN)) {
+        if (this.input.onKey(this.input.key.DOWN) && this.bottom < this.game.canvas.bottom) {
             this.y += this.speed; 
         }
     }
