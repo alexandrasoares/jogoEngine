@@ -2,6 +2,7 @@ import { Draw } from './draw.js';
 import { ImageManager } from './image-manager.js';
 import { SoundManager } from './sound-manager.js';
 import { Input } from './input.js';
+import { AnimationManager } from './animation-manager.js';
 
 const canvas = document.querySelector('#canvas');
 
@@ -11,6 +12,7 @@ export const Game = {
     ImageManager,
     SoundManager,
     Input,
+    AnimationManager,
     constructor() {
         Game.canvas = {
             element: canvas,

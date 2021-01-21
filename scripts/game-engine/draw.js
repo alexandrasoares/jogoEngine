@@ -38,6 +38,24 @@ export class Draw {
         this.ctx.drawImage(image.element, x, y, width, height);
     }
 
+    drawSprite(sprite, number, x, y, width, height) {
+        debugger;
+        x = x ?? 0;
+        y = y ?? 0;
+        width = width ?? sprite.width;
+        height = height ?? sprite.height;
+        this.ctx.drawImage(
+            sprite.image.element,
+            sprite.sprites[number].x,
+            sprite.sprites[number].y,
+            sprite.width,
+            sprite.height,
+            x, 
+            y, 
+            width, 
+            height);
+    }
+
     setText(options = {}) {
         this.fontOptions = {...this.fontOptions, ...options}
         this.ctx.font = `${this.fontOptions.size}px "${this.fontOptions.family}"`
